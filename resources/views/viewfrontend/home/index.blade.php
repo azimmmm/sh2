@@ -1,0 +1,1 @@
+@extends('viewfrontend.layouts.master')
