@@ -35,3 +35,14 @@ Route::group(['prefix' => 'main'], function () {
     Route::post('photos/upload','backend\PhotoController@upload')->name('photos.upload');
 });
 Route::resource('/','Frontend\HomeController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
+
+Route::get('/register2', 'Auth\RegisterController@index')->name('register2');
+Route::get('/register2/getCities/{id}','Auth\RegisterController@getCities')->name('getCities');
+Route::group(['middleware'=>'auth'],function()
+{
+    Route::get('/profile','Frontend\UserController@profile')->name('user.profile');
+});

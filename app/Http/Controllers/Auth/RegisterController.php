@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\City;
 use App\Http\Controllers\Controller;
+use App\Province;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -61,12 +63,26 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+       return User::create([
+            'name'=> $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+]);
+    }
+
+    public function index()
+    {
+        $states=Province::all()->pluck('name','id');
+        return view('Auth.register',compact('states'));
+}
+    public function getCities($id)
+    {
+
+        $cities=City::where('province_id',$id)->get()->pluck('name','id');
+
+        return json_encode($cities);
     }
 }

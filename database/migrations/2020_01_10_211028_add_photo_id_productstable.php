@@ -14,7 +14,7 @@ class AddPhotoIdProductstable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-         $table->bigInteger(photo_id)->unsigned();
+         $table->unsignedBigInteger('photo_id')->nullable();
          $table->foreign('photo_id')->on('products')->references('id')->on('photos')->onDelete('cascade');
         });
     }

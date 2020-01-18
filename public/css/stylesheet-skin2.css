@@ -102,7 +102,7 @@ a:hover, a b:hover, .category .tabs li a:hover, .sitemap li a:hover, .pagination
 /*===================================================================================*/
 /*  Buttons
 /*===================================================================================*/
-.btn-primary { background-color:#c68d1e; }
+.btn-primary { background-color:#c68d1e; margin-right:20px;}
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { background-color:#000; }
 /*===================================================================================*/
 /*  Footer

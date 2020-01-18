@@ -77,7 +77,7 @@
                                 <lable for="photo_id">تصویر</lable>
                                 <div class="dropzone dz-clickable" id="photo">
                                     <div class="dz-default dz-message" data-dz-message="">
-                                        <input type="hidden" id="brand-photo" name="photo_id">
+                                        <input type="hidden" id="product-photo" name="photo_id">
                                         <span>فایل خود را آپلود کنید</span>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ sending: function (file, xhr, formData) {
 formData.append("_token", "{{csrf_token()}}")
 },
 success: function (file, response) {
-document.getElementById('brand-photo').value = response.photo_id
+document.getElementById('product-photo').value = response.photo_id
 
 }
 });

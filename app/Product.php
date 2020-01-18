@@ -20,4 +20,9 @@ return $this->belongsTo(Category::class) ;
     {
 return $this->belongsTo(User::class) ;
    }
+
+    public function photo()
+    {return $this->belongsTo(Photo::class);
+
+   }
 }

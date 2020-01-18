@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Brand;
+use App\City;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +17,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('viewfrontend.home.index');
+        $modtab=Product::with(['category'=>function($q){
+            $q->where('name','پوشاک');
+    }
+    ])->limit(10)->get();
+//modtab dar front narikhtam ta dastebandiham dorost she
+        $brands=Brand::with('Photo')->orderBy('created_at','desc')->limit(10)->get();
+        $latestProduct=Product::with('Photo')->orderBy('created_at','desc')->limit(10)->get();
+//        return $latestProduct;
+        return $latestProduct;
+        return view('viewfrontend.home.index',compact(['latestProduct','brands','modtab']));
     }
 
     /**
@@ -81,5 +93,15 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function citename($id)
+    {
+        $city=City::where($id,province_id)->get();
+
+        return response()->json(['city_id' => $city->id
+        ]);
+
+
     }
 }

@@ -7,6 +7,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -28,6 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         $brands = Brand::all();
         $categories =Category::with('childRecursive')
             ->get();
@@ -38,8 +40,22 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|string
      */
+    public function generateSku()
+    {
+        $number=mt_rand(1000,9999);
+    if($this->checkSku($number)){
+        return $this->generateSku();
+    }
+    return (string)$number;
+    }
+
+    public function checkSku($number)
+    {
+        return Product::where("sku",$number)->exists();
+
+    }
     public function store(Request $request)
     {
         $product=new Product();
@@ -50,13 +66,22 @@ class ProductController extends Controller
         $product->short_desc =$request->input('short_desc');
         $product->discount_price =$request->input('discount_price');
         $product->price =$request->input('price');
-        $product->slug =$request->input('slug');
+
         $product->status =$request->input('status');
         $product->brand_id =$request->input('brand');
+
         $product->user_id =1;
-        $product->sku =1;
-//        $product->photo_id =$request->input('photo_id');
+
+        if ($request->input('slug')) {
+            $product->slug = make_slug($request->input('slug'));
+        } else {
+            $product->slug = make_slug($request->input('title'));
+        }
+        $product->sku =$this->generateSku();
+//
+        $product->photo_id = $request->input('photo_id');
         $product->save();
+        Session::flash('add_product', 'محصول با موفقیت ثبت شد');
         return redirect('main/products');
     }
 

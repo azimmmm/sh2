@@ -1267,7 +1267,7 @@ visibility:hidden;
 .buttons {
 	border-top:1px solid #EEEEEE;
 	overflow: auto;
-	padding:15px 6px 0px 6px;
+	padding:15px 26px 26px 6px;
 	margin-bottom: 20px;
 }
 .btn {
@@ -1985,4 +1985,7 @@ div.required .control-label:before {
 	content: '* ';
 	color: #F00;
 	font-weight: bold;
+}
+.subtitle{
+	margin: 20px;
 }
