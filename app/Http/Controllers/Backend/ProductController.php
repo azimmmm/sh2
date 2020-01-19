@@ -70,7 +70,7 @@ class ProductController extends Controller
         $product->status =$request->input('status');
         $product->brand_id =$request->input('brand');
 
-        $product->user_id =1;
+        $product->user_id =8;
 
         if ($request->input('slug')) {
             $product->slug = make_slug($request->input('slug'));

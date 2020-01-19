@@ -25,7 +25,6 @@ class HomeController extends Controller
         $brands=Brand::with('Photo')->orderBy('created_at','desc')->limit(10)->get();
         $latestProduct=Product::with('Photo')->orderBy('created_at','desc')->limit(10)->get();
 //        return $latestProduct;
-        return $latestProduct;
         return view('viewfrontend.home.index',compact(['latestProduct','brands','modtab']));
     }
 

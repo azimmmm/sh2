@@ -32,7 +32,7 @@
 
                                 @foreach($latestProduct as $product)
                                     <div class="product-thumb clearfix ">
-                                        <div class="image"><a href="product.html"><img src="{{$product->photo->path}}"
+                                        <div class="image"><a href="#"><img src="{{$product->photo->path}}"
                                                                                        alt="{{$product->title}}"
                                                                                        title="{{$product->title}}"
                                                                                        class="img-responsive"/></a>
