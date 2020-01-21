@@ -60,8 +60,8 @@
                                                             class="fa fa-star-o fa-stack-2x"></i></span></div>
                                         </div>
                                         <div class="button-group">
-                                            <button class="btn-primary" type="button" onClick="cart.add('{{$product->id}}');"><span>افزودن به سبد</span>
-                                            </button>
+                                            <a class="btn-primary"  href="{{route('cart.add',['id'=>$product->id])}}"><span>افزودن به سبد</span>
+                                            </a>
                                             <div class="add-to-links">
                                                 <button type="button" data-toggle="tooltip"
                                                         title="افزودن به علاقه مندی ها" onClick=""><i

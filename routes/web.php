@@ -37,6 +37,8 @@ Route::group(['prefix' => 'main'], function () {
 Route::resource('/','Frontend\HomeController');
 Auth::routes();
 
+Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
+Route::post('/remove-item/{id}', 'Frontend\CartController@remove')->name('cart.remove');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
 
