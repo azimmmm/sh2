@@ -434,6 +434,17 @@
                         </li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-ticket-alt"></i>
+                        <span>تخفیف ها</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('coupons.index')}}"><i class="fa fa-list-alt"></i>لیست تخفیف ها</a>
+                        </li>
+                    </ul>
+                </li>
 
 
 

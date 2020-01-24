@@ -3,6 +3,9 @@
 namespace App;
 
 
+use mysql_xdevapi\Session;
+use function PHPSTORM_META\type;
+
 class Cart
 {
     public $items = null;
@@ -10,6 +13,8 @@ class Cart
     public $totalPrice = 0;
     public $totalDisPrice = 0;
     public $totalPurePrice = 0;
+    public $couponDis=0;
+    public $coupons=array();
 
     public function __construct($oldCart)
     {
@@ -19,6 +24,9 @@ class Cart
             $this->totalPrice = $oldCart->totalPrice;
             $this->totalDisPrice = $oldCart->totalDisPrice;
             $this->totalPurePrice = $oldCart->totalPurePrice;
+            if($oldCart->coupons!=null)
+            {array_push($this->coupons,$oldCart->coupons);}
+            $this->couponDis=$oldCart->couponDis;
         }
 
     }
@@ -84,6 +92,17 @@ class Cart
 
                 }
             }
+
+
+    }
+
+    public function addCoupon($coupon)
+    {
+        $couponInfo=['price'=>$coupon->price,'coupon'=>$coupon];
+        $this->totalPrice -=$couponInfo['price'];
+        $this->couponDis+=$couponInfo['price'];
+        array_push($this->coupons,$coupon['id'],$coupon['title']);
+//        dd($this->coupons);
 
 
     }

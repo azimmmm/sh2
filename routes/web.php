@@ -33,11 +33,14 @@ Route::group(['prefix' => 'main'], function () {
     Route::resource('photos', 'Backend\PhotoController');
     Route::resource('products', 'Backend\ProductController');
     Route::post('photos/upload','backend\PhotoController@upload')->name('photos.upload');
+    Route::resource('coupons','backend\CouponController');
 });
 Route::resource('/','Frontend\HomeController');
 Auth::routes();
 
+Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.get');
 Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
+Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 Route::post('/remove-item/{id}', 'Frontend\CartController@remove')->name('cart.remove');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
@@ -47,4 +50,5 @@ Route::get('/register2/getCities/{id}','Auth\RegisterController@getCities')->nam
 Route::group(['middleware'=>'auth'],function()
 {
     Route::get('/profile','Frontend\UserController@profile')->name('user.profile');
+
 });

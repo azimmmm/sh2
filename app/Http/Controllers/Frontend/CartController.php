@@ -41,4 +41,10 @@ class CartController extends Controller
         return back();
 
     }
+
+    public function getCart()
+
+    {$cart=Session::has('cart')? Session::get('cart'):null;
+    return view('viewfrontend.cart.index',compact('cart'));
+    }
 }

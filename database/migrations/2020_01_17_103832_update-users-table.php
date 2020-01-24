@@ -14,11 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address_id');
-            $table->dropColumn('birthday');
-            $table->dropColumn('gender');
-            $table->dropColumn('bank_number');
-            $table->dropColumn('province_id');
+
 
 
         });
@@ -33,11 +29,6 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->unsignedInteger('address_id');
-            $table->string('birthday');
-            $table->tinyInteger('gender');
-            $table->string('bank_number');
-            $table->unsignedInteger('province_id');
 
 
 

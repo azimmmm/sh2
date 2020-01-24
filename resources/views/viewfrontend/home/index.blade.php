@@ -1,5 +1,6 @@
 @extends('viewfrontend.layouts.master')
 @section('maincontent')
+
     <div id="container">
 
         <div class="container">
@@ -1206,6 +1207,7 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="custom-feature-box row">
             <div class="col-md-3 col-sm-6 col-xs-12">

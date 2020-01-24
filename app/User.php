@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
        return $this->hasOne(Address::class);
     }
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class);
+
+    }
 }
