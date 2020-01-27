@@ -2,7 +2,6 @@
 @section('maincontent')
 
     <div id="container">
-
         <div class="container">
             <div class="row">
                 <!--Middle Part Start-->
@@ -33,13 +32,13 @@
 
                                 @foreach($latestProduct as $product)
                                     <div class="product-thumb clearfix ">
-                                        <div class="image"><a href="#"><img src="{{$product->photo->path}}"
+                                        <div class="image"><a href="{{route('product.single',['slug'=>$product->slug])}}"><img src="{{$product->photo->path}}"
                                                                                        alt="{{$product->title}}"
                                                                                        title="{{$product->title}}"
-                                                                                       class="img-responsive"/></a>
+                                                                                       class="img-responsive" style="max-height: 200px"/></a>
                                         </div>
                                         <div class="caption">
-                                            <h4><a href="product.html">{{$product->title}}</a></h4>
+                                            <h4><a href="{{route('product.single',['slug'=>$product->slug])}}">{{$product->title}}</a></h4>
                                             @if($product->discount_price)
                                                 <p class="price"><span class="price-new">{{$product->discount_price}}تومان</span>
                                                     <span class="price-old">{{$product->price}}تومان</span> <span
@@ -402,7 +401,8 @@
                                     <div class="product-thumb">
                                         <div class="image"><a href="product.html"><img
                                                         src="image/product/samsung_tab_1-220x330.jpg" alt="تبلت ایسر"
-                                                        title="تبلت ایسر" class="img-responsive"/></a></div>
+                                                        title="تبلت ایسر" class="img-responsive
+" style="max-height: 100px"/></a></div>
                                         <div class="caption">
                                             <h4><a href="product.html">تبلت ایسر</a></h4>
                                             <p class="price"><span class="price-new">98000 تومان</span> <span

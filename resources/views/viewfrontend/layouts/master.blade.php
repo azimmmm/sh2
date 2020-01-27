@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="image/favicon.png" rel="icon"/>
+    <link href="/image/favicon.png" rel="icon"/>
     <title>مارکت شاپ - قالب HTML فروشگاهی</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
     <!-- CSS Part Start-->
@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/owl.carousel.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/owl.transitions.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('js/swipebox/src/css/swipebox.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet-rtl.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/responsive-rtl.css')}}"/>
@@ -42,8 +43,8 @@
                                                 <table>
                                                     <tbody>
                                                     <tr>
-                                                        <td><img alt="" src="image/banner/cms-block.jpg"></td>
-                                                        <td><img alt="" src="image/banner/responsive.jpg"></td>
+                                                        <td><img alt="" src="/image/banner/cms-block.jpg"></td>
+                                                        <td><img alt="" src="/image/banner/responsive.jpg"></td>
                                                     </tr>
                                                     <tr>
                                                         <td><h4>بلاک های محتوا</h4></td>
@@ -73,17 +74,17 @@
                         </div>
                         <div id="language" class="btn-group">
                             <button class="btn-link dropdown-toggle" data-toggle="dropdown"><span> <img
-                                            src="image/flags/gb.png" alt="انگلیسی" title="انگلیسی">انگلیسی <i
+                                            src="/image/flags/gb.png" alt="انگلیسی" title="انگلیسی">انگلیسی <i
                                             class="fa fa-caret-down"></i></span></button>
                             <ul class="dropdown-menu">
                                 <li>
                                     <button class="btn btn-link btn-block language-select" type="button" name="GB"><img
-                                                src="image/flags/gb.png" alt="انگلیسی" title="انگلیسی"/> انگلیسی
+                                                src="/image/flags/gb.png" alt="انگلیسی" title="انگلیسی"/> انگلیسی
                                     </button>
                                 </li>
                                 <li>
                                     <button class="btn btn-link btn-block language-select" type="button" name="GB"><img
-                                                src="image/flags/ar.png" alt="عربی" title="عربی"/> عربی
+                                                src="/image/flags/ar.png" alt="عربی" title="عربی"/> عربی
                                     </button>
                                 </li>
                             </ul>
@@ -137,7 +138,7 @@
                 <div class="table-container">
                     <!-- Logo Start -->
                     <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                        <div id="logo"><a href="index.html"><img class="img-responsive" src="image/logo.png"
+                        <div id="logo"><a href="index.html"><img class="img-responsive" src="/image/logo.png"
                                                                  title="MarketShop" alt="MarketShop"/></a></div>
                     </div>
                     <!-- Logo End -->
@@ -147,7 +148,7 @@
                             <button type="button" data-toggle="dropdown" data-loading-text="بارگذاری ..."
                                     class="heading dropdown-toggle">
                                 <span class="cart-icon pull-left flip"></span>
-                                <span id="cart-total">{{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalNumber.'آیتم':'0'.'آیتم'}}{{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalPrice.'تومان':''}}</span>
+                           <span id="cart-total">{{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalNumber.'آیتم':'0'.'آیتم'}}{{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalPrice.'تومان':''}}</span>
                             </button>
                             @if(Session::has('cart'))
                                 {{--{{dd(Session::get('cart'))}}--}}
@@ -366,17 +367,17 @@
                         </li>
                         <li class="menu_brands dropdown"><a href="#">برند ها</a>
                             <div class="dropdown-menu">
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="اپل" alt="اپل" /></a><a href="#">اپل</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="کنون" alt="کنون" /></a><a href="#">کنون</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"> <a href="#"><img src="image/product/hp_logo-60x60.jpg" title="اچ پی" alt="اچ پی" /></a><a href="#">اچ پی</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/htc_logo-60x60.jpg" title="اچ تی سی" alt="اچ تی سی" /></a><a href="#">اچ تی سی</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/palm_logo-60x60.jpg" title="پالم" alt="پالم" /></a><a href="#">پالم</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/sony_logo-60x60.jpg" title="سونی" alt="سونی" /></a><a href="#">سونی</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test" alt="test" /></a><a href="#">تست</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 3" alt="test 3" /></a><a href="#">تست 3</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 5" alt="test 5" /></a><a href="#">تست 5</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 6" alt="test 6" /></a><a href="#">تست 6</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 7" alt="test 7" /></a><a href="#">تست 7</a> </div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/apple_logo-60x60.jpg" title="اپل" alt="اپل" /></a><a href="#">اپل</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/canon_logo-60x60.jpg" title="کنون" alt="کنون" /></a><a href="#">کنون</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"> <a href="#"><img src="/image/product/hp_logo-60x60.jpg" title="اچ پی" alt="اچ پی" /></a><a href="#">اچ پی</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/htc_logo-60x60.jpg" title="اچ تی سی" alt="اچ تی سی" /></a><a href="#">اچ تی سی</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/palm_logo-60x60.jpg" title="پالم" alt="پالم" /></a><a href="#">پالم</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/sony_logo-60x60.jpg" title="سونی" alt="سونی" /></a><a href="#">سونی</a> </div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/canon_logo-60x60.jpg" title="test" alt="test" /></a><a href="#">تست</a> </div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/apple_logo-60x60.jpg" title="test 3" alt="test 3" /></a><a href="#">تست 3</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/canon_logo-60x60.jpg" title="test 5" alt="test 5" /></a><a href="#">تست 5</a> </div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/canon_logo-60x60.jpg" title="test 6" alt="test 6" /></a><a href="#">تست 6</a></div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="/image/product/apple_logo-60x60.jpg" title="test 7" alt="test 7" /></a><a href="#">تست 7</a> </div>
 
 
                             </div>
@@ -388,9 +389,9 @@
                                         <table>
                                             <tbody>
                                             <tr>
-                                                <td><img alt="" src="image/banner/cms-block.jpg"></td>
-                                                <td><img alt="" src="image/banner/responsive.jpg"></td>
-                                                <td><img alt="" src="image/banner/cms-block.jpg"></td>
+                                                <td><img alt="" src="/image/banner/cms-block.jpg"></td>
+                                                <td><img alt="" src="/image/banner/responsive.jpg"></td>
+                                                <td><img alt="" src="/image/banner/cms-block.jpg"></td>
                                             </tr>
                                             <tr>
                                                 <td><h4>بلاک های محتوا</h4></td>
@@ -506,18 +507,18 @@
                                                                                      target="_blank">مسترکد</a></p>
                     </div>
                     <div class="social pull-right flip"><a href="#" target="_blank"> <img data-toggle="tooltip"
-                                                                                          src="image/socialicons/facebook.png"
+                                                                                          src="/image/socialicons/facebook.png"
                                                                                           alt="Facebook"
                                                                                           title="Facebook"></a> <a
-                                href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/twitter.png"
+                                href="#" target="_blank"> <img data-toggle="tooltip" src="/image/socialicons/twitter.png"
                                                                alt="Twitter" title="Twitter"> </a> <a href="#"
                                                                                                       target="_blank">
-                            <img data-toggle="tooltip" src="image/socialicons/google_plus.png" alt="Google+"
+                            <img data-toggle="tooltip" src="/image/socialicons/google_plus.png" alt="Google+"
                                  title="Google+"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip"
-                                                                                         src="image/socialicons/pinterest.png"
+                                                                                         src="/image/socialicons/pinterest.png"
                                                                                          alt="Pinterest"
                                                                                          title="Pinterest"> </a> <a
-                                href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/rss.png"
+                                href="#" target="_blank"> <img data-toggle="tooltip" src="/image/socialicons/rss.png"
                                                                alt="RSS" title="RSS"> </a></div>
                 </div>
                 <div class="bottom-row">
@@ -527,21 +528,21 @@
                             گرافیک است.</p>
                     </div>
                     <div class="payments_types"><a href="#" target="_blank"> <img data-toggle="tooltip"
-                                                                                  src="image/payment/payment_paypal.png"
+                                                                                  src="/image/payment/payment_paypal.png"
                                                                                   alt="paypal" title="PayPal"></a> <a
                                 href="#" target="_blank"> <img data-toggle="tooltip"
-                                                               src="image/payment/payment_american.png"
+                                                               src="/image/payment/payment_american.png"
                                                                alt="american-express" title="American Express"></a> <a
                                 href="#" target="_blank"> <img data-toggle="tooltip"
-                                                               src="image/payment/payment_2checkout.png" alt="2checkout"
+                                                               src="/image/payment/payment_2checkout.png" alt="2checkout"
                                                                title="2checkout"></a> <a href="#" target="_blank"> <img
-                                    data-toggle="tooltip" src="image/payment/payment_maestro.png" alt="maestro"
+                                    data-toggle="tooltip" src="/image/payment/payment_maestro.png" alt="maestro"
                                     title="Maestro"></a> <a href="#" target="_blank"> <img data-toggle="tooltip"
-                                                                                           src="image/payment/payment_discover.png"
+                                                                                           src="/image/payment/payment_discover.png"
                                                                                            alt="discover"
                                                                                            title="Discover"></a> <a
                                 href="#" target="_blank"> <img data-toggle="tooltip"
-                                                               src="image/payment/payment_mastercard.png"
+                                                               src="/image/payment/payment_mastercard.png"
                                                                alt="mastercard" title="MasterCard"></a></div>
                 </div>
             </div>

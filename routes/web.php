@@ -32,23 +32,25 @@ Route::group(['prefix' => 'main'], function () {
     Route::resource('brands', 'Backend\BrandController');
     Route::resource('photos', 'Backend\PhotoController');
     Route::resource('products', 'Backend\ProductController');
-    Route::post('photos/upload','backend\PhotoController@upload')->name('photos.upload');
-    Route::resource('coupons','backend\CouponController');
+    Route::post('photos/upload', 'backend\PhotoController@upload')->name('photos.upload');
+    Route::resource('coupons', 'backend\CouponController');
 });
-Route::resource('/','Frontend\HomeController');
 Auth::routes();
 
+//front route
+Route::resource('/', 'Frontend\HomeController');
 Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.get');
 Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
 Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 Route::post('/remove-item/{id}', 'Frontend\CartController@remove')->name('cart.remove');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
-
 Route::get('/register2', 'Auth\RegisterController@index')->name('register2');
-Route::get('/register2/getCities/{id}','Auth\RegisterController@getCities')->name('getCities');
-Route::group(['middleware'=>'auth'],function()
-{
-    Route::get('/profile','Frontend\UserController@profile')->name('user.profile');
+Route::get('/register2/getCities/{id}', 'Auth\RegisterController@getCities')->name('getCities');
+Route::get('/products/{slug}','Frontend\ProductController@getProduct')->name('product.single');
+
+//front with middleware
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
 
 });
