@@ -273,8 +273,13 @@
                                             <h4><a href="{{route('product.single',['slug'=>$rproduct->slug])}}">{{$rproduct->title}}</a></h4>
                                             @if($rproduct->discount_price)
                                                 <p class="price"><span class="price-new">{{$rproduct->discount_price}}تومان</span>
-                                                    <span class="price-old">{{$rproduct->price}}تومان</span> <span
-                                                            class="saving">{{round(abs(($rproduct->price-$rproduct->discount_price)/$product->price*100))}}%</span>
+                                                    <span class="price-old">{{$rproduct->price}}تومان</span>  @if(round(abs(($product->price-$product->discount_price)/$product->price*100))>0)
+                                                        <span
+                                                                class="saving">{{round(abs(($product->price-$product->discount_price)/$product->price*100))}}%</span>
+                                                    @else
+                                                        <span
+                                                                class="saving">{{abs(($product->price-$product->discount_price)/$product->price*100)}}%</span>
+                                                    @endif
                                                 </p>
                                             @else
                                                 <p class="price"><span class="price-new">{{$rproduct->price}}تومان</span></p>

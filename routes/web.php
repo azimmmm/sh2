@@ -48,6 +48,7 @@ Route::post('/register-user', 'Frontend\UserController@register')->name('registe
 Route::get('/register2', 'Auth\RegisterController@index')->name('register2');
 Route::get('/register2/getCities/{id}', 'Auth\RegisterController@getCities')->name('getCities');
 Route::get('/products/{slug}','Frontend\ProductController@getProduct')->name('product.single');
+Route::get('category/{id}/{pages?}','Frontend\ProductController@getProductByCategory')->name('category.index');
 
 //front with middleware
 Route::group(['middleware' => 'auth'], function () {

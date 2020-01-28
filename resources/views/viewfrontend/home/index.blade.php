@@ -35,14 +35,21 @@
                                         <div class="image"><a href="{{route('product.single',['slug'=>$product->slug])}}"><img src="{{$product->photo->path}}"
                                                                                        alt="{{$product->title}}"
                                                                                        title="{{$product->title}}"
-                                                                                       class="img-responsive" style="max-height: 200px"/></a>
+                                                                                       class="img-responsive" style="max-height: 100px"/></a>
                                         </div>
                                         <div class="caption">
                                             <h4><a href="{{route('product.single',['slug'=>$product->slug])}}">{{$product->title}}</a></h4>
                                             @if($product->discount_price)
                                                 <p class="price"><span class="price-new">{{$product->discount_price}}تومان</span>
-                                                    <span class="price-old">{{$product->price}}تومان</span> <span
+                                                    <span class="price-old">{{$product->price}}تومان</span>
+                                                    @if(round(abs(($product->price-$product->discount_price)/$product->price*100))>0)<span
+
                                                             class="saving">{{round(abs(($product->price-$product->discount_price)/$product->price*100))}}%</span>
+                                                        @else
+                                                        <span
+
+                                                                class="saving">{{abs(($product->price-$product->discount_price)/$product->price*100)}}%</span>
+@endif
                                                 </p>
                                             @else
                                                 <p class="price"><span class="price-new">{{$product->price}}تومان</span>
