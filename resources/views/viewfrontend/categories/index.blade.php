@@ -295,7 +295,8 @@
                                         @endif
                                     </div>
                                     <div class="button-group">
-                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
+                                        <a class="btn-primary"  href="{{route('cart.add',['id'=>$product->id])}}"><span>افزودن به سبد</span>
+                                        </a>
                                         <div class="add-to-links">
                                             <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی ها" onClick=""><i class="fa fa-heart"></i> <span>افزودن به علاقه مندی ها</span></button>
                                             <button type="button" data-toggle="tooltip" title="مقایسه این محصول" onClick=""><i class="fa fa-exchange"></i> <span>مقایسه این محصول</span></button>
