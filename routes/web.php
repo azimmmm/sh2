@@ -32,8 +32,9 @@ Route::group(['prefix' => 'main'], function () {
     Route::resource('brands', 'Backend\BrandController');
     Route::resource('photos', 'Backend\PhotoController');
     Route::resource('products', 'Backend\ProductController');
-    Route::post('photos/upload', 'backend\PhotoController@upload')->name('photos.upload');
-    Route::resource('coupons', 'backend\CouponController');
+    Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
+    Route::resource('coupons', 'Backend\CouponController');
+    Route::get('/orders', 'Backend\orderController@index')->name('orders.index');
 });
 Auth::routes();
 
@@ -53,5 +54,6 @@ Route::get('category/{id}/{pages?}','Frontend\ProductController@getProductByCate
 //front with middleware
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
-
+Route::get('/order-verify','Frontend\orderController@verify')->name('order.verify');
+Route::get('/payment-verify/{id}','Frontend\PaymentController@verify')->name('payment.verify');
 });

@@ -1,17 +1,15 @@
 @extends('viewfrontend.layouts.master')
 <!--Right Part Start -->
 @section('maincontent')
-    @if(\Illuminate\Support\Facades\Session::has('success'))
-        <div class="alert alert-success">
 
-            {{session('success')}}
-        </div>
-    @endif
     <div class="row">
         <div id="column-right" class="col-sm-9 hidden-xs">
-    <h3 class="subtitle">حساب کاربری</h3>
-            <p class="alert alert-success">{{$user->name.' '.$user->last_name}} خوش آمدید .</p>
-
+    <h3 class="subtitle">   حساب کاربری {{$user->name.' '.$user->last_name}} </h3>
+            @if(\Illuminate\Support\Facades\Session::has('success'))
+            <div class="alert alert-success">
+            <p> {{session('success')}}</p>
+            </div>
+            @endif
     <div class="list-group">
         <ul class="list-item">
 

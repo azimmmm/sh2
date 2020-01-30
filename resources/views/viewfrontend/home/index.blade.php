@@ -4,6 +4,11 @@
     <div id="container">
         <div class="container">
             <div class="row">
+                @if(\Illuminate\Support\Facades\Session::has('empty'))
+                    <div class="alert alert-warning">
+                        {{session('empty')}}
+                    </div>
+            @endif
                 <!--Middle Part Start-->
                 <div id="content" class="col-xs-12">
                     <!-- Slideshow Start-->

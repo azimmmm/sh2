@@ -27,4 +27,10 @@ return $this->belongsTo(User::class) ;
     {return $this->belongsTo(Photo::class);
 
    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+
+   }
 }

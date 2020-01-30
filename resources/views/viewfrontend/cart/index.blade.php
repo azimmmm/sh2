@@ -10,6 +10,12 @@
             </ul>
             <!-- Breadcrumb End-->
             <div class="row">
+                @if(Session::has('failpay'))
+                    <div class="alert alert-warning">
+                        {{session('failpay')}}
+                    </div>
+
+                @endif
                 <!--Middle Part Start-->
                 <div id="content" class="col-sm-12">
                     <h1 class="title">سبد خرید</h1>
@@ -541,7 +547,7 @@
                 </div>
                 <div class="buttons">
                     <div class="pull-left"><a href="index.html" class="btn btn-default">ادامه خرید</a></div>
-                    <div class="pull-right"><a href="checkout.html" class="btn btn-primary">تسویه حساب</a></div>
+                    <div class="pull-right"><a href="{{route('order.verify')}}" class="btn btn-primary">تسویه حساب</a></div>
                 </div>
             </div>
             @else
