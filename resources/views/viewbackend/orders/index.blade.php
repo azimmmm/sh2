@@ -34,13 +34,16 @@
                             <td>{{$order->id}}</td>
 
                             <td class="text-center">{{$order->amount}}</td>
-                            <td class="text-center">@if($order->status==1)
-                                <td class="text-center"><span class="text-success">فعال</span></td>
-                            @else
-                                <td class="text-center "><span class="text-danger">غیر فعال</span></td>
+
+                            <td class="text-center">
+                                @if($order->status==1)
+                                    <span class="text-success">پرداخت شده</span>
+                                @else
+                                    <span class="text-danger">پرداخت نشده</span>
+
                                 @endif
-                                </td>
-                            {{--<td>{{\Hekmatinasser\Verta\Verta::instance($category->created_at)->formatDifference()}}</td>--}}
+                            </td>
+{{--<td>{{\Hekmatinasser\Verta\Verta::instance($category->created_at)->formatDifference()}}</td>--}}
 
                         </tr>
 

@@ -387,6 +387,14 @@
                     {{--</a>--}}
                 {{--</li>--}}
                 <li class="treeview">
+                    <a href="{{url('/main')}}">
+                        <i class="fa fa-home"></i>
+                        <span>صفحه اصلی</span>
+
+                    </a>
+
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-list"></i>
                         <span>دسته بندی ها</span>

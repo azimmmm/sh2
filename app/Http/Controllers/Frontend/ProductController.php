@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -33,4 +34,19 @@ return view('viewfrontend.products.index',compact(['product','relatedProducts'])
         return view('viewfrontend.categories.index',compact(['category','productscat']));
 
     }
+    public function searchProduct()
+    {
+        $query = Input::get('search');
+
+        $products = Product::with('brand', 'category', 'photo')
+            ->where('title', 'like', "%" . $query . "%")
+            ->paginate(5);
+//        foreach ($products->items() as $product){
+//            dd($product);
+//    }
+//        dd($products);
+        $categories=Category::all();
+        return view('viewfrontend.products.search',compact(['products','categories','query']));
+    }
+
 }
