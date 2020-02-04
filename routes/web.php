@@ -47,6 +47,7 @@ Route::post('/remove-item/{id}', 'Frontend\CartController@remove')->name('cart.r
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
 Route::get('/register2', 'Auth\RegisterController@index')->name('register2');
+Route::post('/register2', 'Auth\RegisterController@indexPost')->name('register2.post');
 Route::get('/register2/getCities/{id}', 'Auth\RegisterController@getCities')->name('getCities');
 Route::get('/products/{slug}','Frontend\ProductController@getProduct')->name('product.single');
 Route::get('category/{id}/{pages?}','Frontend\ProductController@getProductByCategory')->name('category.index');

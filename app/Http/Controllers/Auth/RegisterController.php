@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Province;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -75,6 +77,8 @@ class RegisterController extends Controller
 
     public function index()
     {
+        App::setLocale('fa');
+//        dd(App::getLocale());
         $states=Province::all()->pluck('name','id');
         return view('Auth.register',compact('states'));
 }
@@ -85,4 +89,43 @@ class RegisterController extends Controller
 
         return json_encode($cities);
     }
+    public function indexPost(Request $request)
+
+    {
+        App::setLocale('fa');
+
+
+
+        $validator = Validator::make($request->all(), [
+
+            'first_name' => ['required', 'string', 'max:255'],
+
+            'last_name' =>['required', 'string', 'max:255'],
+
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            'address' =>['required','string'],
+            'phone' => ['required'],
+            'city' => 'required',
+            'state' => 'required',
+            'postcode' => 'required|digits:10',
+            'national_code' => 'required|digits:10',
+            'password' => ['required']
+
+
+        ]);
+
+
+
+        if ($validator->passes()) {
+
+            return response()->json(['success'=>'Added new records.']);
+
+        }
+
+
+
+        return response()->json(['error'=>$validator->errors()->all()]);
+//
+   }
 }

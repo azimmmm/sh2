@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
     <link href="/image/favicon.png" rel="icon"/>
     <title>مارکت شاپ - قالب HTML فروشگاهی</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet-skin2.css')}}"/>
 
     <!-- CSS Part End-->
+    @yield('head')
 </head>
 <body>
 <div class="wrapper-wide">

@@ -1,14 +1,21 @@
 @extends('viewfrontend.layouts.master')
 
+
 @section('maincontent')
+
     <div class="row">
         <!--Middle Part Start-->
         <div class="col-sm-9" id="content">
             <h1 class="title">ثبت نام حساب کاربری</h1>
             <p>اگر قبلا حساب کاربریتان را ایجاد کرد اید جهت ورود به <a href="{{route('login')}}">صفحه لاگین</a> مراجعه
                 کنید.</p>
-            <form class="form-horizontal" method="post" action="{{route('register-user')}}">
-                @csrf
+            <div class="alert alert-danger print-error-msg" style="display:none">
+
+                <ul></ul>
+
+            </div>
+            <form class="form-horizontal">
+                {{ csrf_field() }}
                 <fieldset id="account">
                     <legend>اطلاعات شخصی شما</legend>
                     <div class="form-group required">
@@ -42,7 +49,8 @@
                     <div class="form-group required">
                         <label for="input-nationalcode" class="col-sm-2 control-label">کدملی</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-nationalcode" placeholder="کدملی" value="" name="national_code">
+                            <input type="text" class="form-control" id="input-nationalcode" placeholder="کدملی" value=""
+                                   name="national_code">
                         </div>
                     </div>
                 </fieldset>
@@ -51,10 +59,10 @@
                     <div class="form-group required">
                         <label for="state" class="col-sm-2 control-label">استان</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="state" id="state" >
+                            <select class="form-control" name="state" id="state">
                                 <option value="">استان را انتخاب کنید</option>
-@foreach($states as $key=>$value)
-    <option value="{{$key}}">{{$value}}</option>
+                                @foreach($states as $key=>$value)
+                                    <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -101,26 +109,11 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
-                    <legend>خبرنامه</legend>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">اشتراک</label>
-                        <div class="col-sm-10">
-                            <label class="radio-inline">
-                                <input type="radio" value="1" name="newsletter">
-                                بله</label>
-                            <label class="radio-inline">
-                                <input type="radio" checked="checked" value="0" name="newsletter">
-                                نه</label>
-                        </div>
-                    </div>
-                </fieldset>
+
                 <div class="buttons">
                     <div class="pull-right">
-                        <input type="checkbox" value="1" name="agree">
-                        &nbsp;من <a class="agree" href="#"><b>سیاست حریم خصوصی</b> را خوانده ام و با آن موافق هستم</a>
-                        &nbsp;
-                        <input type="submit" class="btn btn-primary" value="ادامه">
+
+                        <button class="btn btn-success btn-submit">Submit</button>
                     </div>
                 </div>
             </form>
@@ -208,29 +201,116 @@
 
 @section('scripts')
     <script>
-    $(document).ready(function () {
-        $('select[name="state"]').on('change',function () {
-            var state_id=$(this).val();
-            console.log(state_id);
-            if(state_id){
-              $.ajax({
-                  url:'/register2/getCities/'+state_id,
-                  type:'GET',
-                  dataType:'json',
-                  success:function (data) {
-                      console.log(data);
-                      $('select[name="city"]').empty();
-$.each(data,function(key,value){
-    $('select[name="city"]').append('<option value="'+key+'">'+value+'</option>');
-});
-                  }
-              });
-            }else {
-                $('select[name="state"]').empty();
+        $(document).ready(function () {
+            $('select[name="state"]').on('change', function () {
+                var state_id = $(this).val();
+                console.log(state_id);
+                if (state_id) {
+                    $.ajax({
+                        url: '/register2/getCities/' + state_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                            $('select[name="city"]').empty();
+                            $.each(data, function (key, value) {
+                                $('select[name="city"]').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('select[name="state"]').empty();
+                }
+
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $(".btn-submit").click(function (e) {
+
+                e.preventDefault();
+
+
+                var _token = $("input[name='_token']").val();
+
+                var first_name = $("input[name='name']").val();
+
+                var last_name = $("input[name='lastname']").val();
+
+                var email = $("input[name='email']").val();
+                var phone = $("input[name='phone']").val();
+                var national_code = $("input[name='national_code']").val();
+                var postcode = $("input[name='postcode']").val();
+
+                var address = $("input[name='address']").val();
+                var city = $("select[name='city']").val();
+                var state = $("select[name='state']").val();
+                var password = $("input[name='password']").val();
+
+                console.log(_token);
+
+                $.ajax({
+
+                    url:"{{ route('register2.post') }}",
+
+                    type: 'POST',
+
+                    data: {
+                        _token: _token,
+                        first_name: first_name,
+                        last_name: last_name,
+                        email: email,
+                        address: address,
+                        phone:phone,
+                        city:city,
+                        state:state,
+                        national_code:national_code,
+                        postcode:postcode,
+                        password:password
+                    },
+
+                    success: function (data) {
+
+                        if ($.isEmptyObject(data.error)) {
+
+                            alert(data.success);
+
+                        } else {
+
+                            printErrorMsg(data.error);
+
+                        }
+
+                    }
+
+                });
+
+
+            });
+
+
+            function printErrorMsg(msg) {
+
+                $(".print-error-msg").find("ul").html('');
+
+                $(".print-error-msg").css('display', 'block');
+
+                $.each(msg, function (key, value) {
+
+                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+
+                });
+
             }
 
         });
 
-    });
+
     </script>
 @endsection
