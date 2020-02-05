@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\App;
 
 class UserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,34 +24,34 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        App::setLocale('fa');
         return [
+
             'first_name' => ['required', 'string', 'max:255'],
 
             'last_name' =>['required', 'string', 'max:255'],
 
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 
-            'address' => 'required',
-            'phone' => 'required',
+            'address' =>['required','string'],
+            'phone' => ['required'],
             'city' => 'required',
             'state' => 'required',
-            'national_code' => 'required',
-            'national_code' => 'required',
+            'postcode' => 'required|digits:10',
+            'national_code' => 'required|digits:10',
             'password' => ['required']
+
 
 
         ];
     }
+
     public function messages()
-    {
-        return [
-            'first_name.required'=> 'نام خالی است.',
-            'last_name.required'=> 'نام خانوادگی  خالی است.',
- 'address.required'=> 'آدرس خالی است.',
- 'email.required'=> 'ایمیل خالی است',
- 'email.email' => 'ایمیل اشتباه است',
- 'city.required'=> 'پیغام خالی است',
- 'state.required'=> 'پیغام خالی است',
- ];
- }
+    {return[
+        'first_name.required'=>'نام را وارد کنید',
+
+    ];
+        
+    }
+
 }

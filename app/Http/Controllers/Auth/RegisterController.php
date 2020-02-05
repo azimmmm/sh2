@@ -6,11 +6,13 @@ use App\City;
 use App\Http\Controllers\Controller;
 use App\Province;
 use App\User;
+use App\Address;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 
 class RegisterController extends Controller
 {
@@ -118,6 +120,22 @@ class RegisterController extends Controller
 
 
         if ($validator->passes()) {
+
+            $user = new User();
+            $user->name = $request['first_name'];
+            $user->last_name = $request['last_name'];
+            $user->email = $request['email'];
+            $user->national_code = $request['national_code'];
+            $user->phone = $request['phone'];
+            $user->password = Hash::make($request['password']);
+            $user->save();
+            $address=new Address();
+            $address->post_code= $request['postcode'];
+            $address->city_id= $request['city'];
+            $address->state_id= $request['state'];
+            $address->address= $request['address'];
+            $address->user_id=$user->id;
+            $address->save();
 
             return response()->json(['success'=>'Added new records.']);
 

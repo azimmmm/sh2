@@ -22,7 +22,7 @@
                         <label for="input-name" class="col-sm-2 control-label">نام</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="input-name" placeholder="نام" value=""
-                                   name="name">
+                                   name="name" AUTOFOCUS>
                         </div>
                     </div>
                     <div class="form-group required">
