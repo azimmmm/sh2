@@ -42,7 +42,7 @@
                             </span>
                             @endif
                             <br />
-                            <a href="#">فراموشی رمز عبور</a></div>
+                            <a href="{{route('password.update')}}">فراموشی رمز عبور</a></div>
                         <input type="submit" value="ورود" class="btn btn-primary" />
                     </form>
 
