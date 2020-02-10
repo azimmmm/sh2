@@ -10,6 +10,11 @@
             <p> {{session('success')}}</p>
             </div>
             @endif
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
     <div class="list-group">
         <ul class="list-item">
 
