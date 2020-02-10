@@ -18,6 +18,7 @@
     <div class="list-group">
         <ul class="list-item">
 
+            <li><a href="{{route('index')}}">صفحه اصلی</a></li>
             <li><a href="#">لیست آدرس ها</a></li>
             <li><a href="wishlist.html">لیست علاقه مندی</a></li>
             <li><a href="#">تاریخچه سفارشات</a></li>
