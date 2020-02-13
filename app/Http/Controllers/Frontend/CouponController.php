@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Validator;
 
 class CouponController extends Controller
 {
+    protected $redirectTo = '/login';
+
+
+
+    public function __construct()
+    {
+        $this->middleware('Authenticate');
+    }
+
+
+
     public function addCoupon(Request $request)
     {
         App::setLocale('fa');
@@ -40,10 +51,10 @@ class CouponController extends Controller
                     $user->coupons()->attach($coupon->id);
                     $user->save();
 //            Session::flash('success', 'شما قبلا از این کد تخفیف استفاده کرده اید ');
-                    return response()->json(['success' => 'Added coupons.']);
+                    return response()->json(['success' => ['coupon'=>'کوپن در سبد خرید اعمال شد']]);
 
                 } else {
-                    Return response()->json(['error' => 'این کد تخفیف قبلا استفاده شده است']);
+                    Return response()->json(['error' => ['coupon'=>'این کد تخفیف قبلا استفاده شده است']]);
                 }
 
             } else {

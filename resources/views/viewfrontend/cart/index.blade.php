@@ -86,6 +86,11 @@
                                     <ul></ul>
 
                                 </div>
+                                <div class="alert alert-success print-success-msg" style="display:none">
+
+                                    <ul></ul>
+
+                                </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">استفاده از کوپن تخفیف</h4>
@@ -103,7 +108,7 @@
                                                            placeholder="کد تخفیف خود را در اینجا وارد کنید" id="coupon"
                                                            class="form-control"/>
                                                     <span class="input-group-btn">
-                                                <button type="submit" class="btn btn-primary">اعمال کوپن</button>
+                                                <button type="submit" class="btn btn-primary btn-coupon">اعمال کوپن</button>
                       </span></div>
                                             </form>
                                         </div>
@@ -188,7 +193,7 @@
 
         $(document).ready(function () {
 
-            $(".btn-primary").click(function (e) {
+            $(".btn-coupon").click(function (e) {
 
                 e.preventDefault();
 
@@ -217,7 +222,7 @@
 console.log(data);
                         if ($.isEmptyObject(data.error)) {
 
-                            alert(data.success);
+                            printSuccessMsg(data.success);
 
                         } else {
 
@@ -242,6 +247,19 @@ console.log(data);
                 $.each(msg, function (key, value) {
 
                     $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+
+                });
+
+            }
+            function printSuccessMsg(msg) {
+
+                $(".print-success-msg").find("ul").html('');
+
+                $(".print-success-msg").css('display', 'block');
+
+                $.each(msg, function (key, value) {
+
+                    $(".print-success-msg").find("ul").append('<li>' + value + '</li>');
 
                 });
 

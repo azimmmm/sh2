@@ -8,10 +8,19 @@
                 {{session('success')}}
             </div>
         @endif
+
         <div class="row">
+
         <div id="content" class="col-sm-9">
-            <h1 class="title">حساب کاربری ورود</h1>
+
+            <h1 class="title"> ورود</h1>
             <div class="row">
+                @if(\Illuminate\Support\Facades\Session::has('userauth'))
+                    <div class="alert alert-warning">
+
+                        {{session('userauth')}}
+                    </div>
+                @endif
                 <div class="col-sm-6">
                     <h2 class="subtitle">مشتری جدید</h2>
                     <p><strong>ثبت نام حساب کاربری</strong></p>
