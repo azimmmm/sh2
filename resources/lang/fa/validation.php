@@ -174,8 +174,9 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
-        'state'=>'استان',
-        'national_code'=>'کد ملی',
-        'postcode'=>'کدپستی',
+        'state'                 =>'استان',
+        'national_code'         =>'کد ملی',
+        'postcode'              =>'کدپستی',
+        'coupon'                =>'کوپن',
     ],
 ];
