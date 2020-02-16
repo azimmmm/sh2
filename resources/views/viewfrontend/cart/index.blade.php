@@ -104,7 +104,7 @@
                                             <form>
                                                 @csrf
                                                 <div class="input-group">
-                                                    <input type="text" name="code"
+                                                    <input type="text" name="coupon"
                                                            placeholder="کد تخفیف خود را در اینجا وارد کنید" id="coupon"
                                                            class="form-control"/>
                                                     <span class="input-group-btn">
@@ -200,7 +200,7 @@
 
                 var _token = $("input[name='_token']").val();
 
-                var coupon = $("input[name='code']").val();
+                var coupon = $("input[name='coupon']").val();
 
 
                 console.log(_token);

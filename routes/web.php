@@ -42,7 +42,7 @@ Auth::routes();
 Route::resource('/', 'Frontend\HomeController');
 Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.get');
 Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
-Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
+
 Route::post('/remove-item/{id}', 'Frontend\CartController@remove')->name('cart.remove');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/register-user', 'Frontend\UserController@register')->name('register-user');
@@ -58,4 +58,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
 Route::get('/order-verify','Frontend\orderController@verify')->name('order.verify');
 Route::get('/payment-verify/{id}','Frontend\PaymentController@verify')->name('payment.verify');
+    Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 });

@@ -6,6 +6,7 @@ use App\Cart;
 use App\Coupon;
 use App\Http\Controllers\Controller;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -18,15 +19,17 @@ class CouponController extends Controller
 
 
 
-    public function __construct()
-    {
-        $this->middleware('Authenticate');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('Authenticate');
+//    }
 
 
 
     public function addCoupon(Request $request)
     {
+//        Return response()->json(['error' => ['coupon'=>'injam']]);
+
         App::setLocale('fa');
 
         $validator = Validator::make($request->all(), [
