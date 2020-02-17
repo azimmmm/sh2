@@ -59,4 +59,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/order-verify','Frontend\orderController@verify')->name('order.verify');
 Route::get('/payment-verify/{id}','Frontend\PaymentController@verify')->name('payment.verify');
     Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
+
 });
