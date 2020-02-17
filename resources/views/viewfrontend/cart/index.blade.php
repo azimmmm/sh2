@@ -81,16 +81,12 @@
                                         {{--{{session('addcoupon')}}--}}
                                     {{--</div>--}}
                                 {{--@endif--}}
-                                <div class="alert alert-warning print-error-msg" style="display:none">
+                                <div class="text-warning print-msg" style="display:none">
 
                                     <ul></ul>
 
                                 </div>
-                                <div class="alert alert-success print-success-msg" style="display:none">
 
-                                    <ul></ul>
-
-                                </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">استفاده از کوپن تخفیف</h4>
@@ -116,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-4 col-sm-offset-2">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered tb1">
                                     <tr>
                                         <td class="text-right"><strong>جمع کل:</strong></td>
                                         <td class="text-right">{{\Illuminate\Support\Facades\Session::get('cart')->totalPurePrice}}
@@ -144,8 +140,8 @@
                                         <tr>
                                             <td
 
-                                                    class="text-right"><strong>مبلغ کوپن ها:</strong></td>
-                                            <td class="text-right">{{\Illuminate\Support\Facades\Session::get('cart')->couponDis}}
+                                                    class="text-right" id="label-coupon"><strong>مبلغ کوپن ها:</strong></td>
+                                            <td class="text-right" id="amount-coupon">{{\Illuminate\Support\Facades\Session::get('cart')->couponDis}}
                                                 تومان
                                             </td>
                                         </tr>
@@ -154,8 +150,8 @@
                                     @endif
 
                                     <tr>
-                                        <td class="text-right"><strong>قابل پرداخت:</strong></td>
-                                        <td class="text-right">{{\Illuminate\Support\Facades\Session::get('cart')->totalPrice}}</td>
+                                        <td class="text-right" id="label-totalprice"><strong>قابل پرداخت:</strong></td>
+                                        <td class="text-right" id="totalprice">{{\Illuminate\Support\Facades\Session::get('cart')->totalPrice}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -164,7 +160,7 @@
 
                     </div>
                     <div class="buttons">
-                        <div class="pull-left"><a href="index.html" class="btn btn-default">ادامه خرید</a></div>
+                        <div class="pull-left"><a href="{{url('/')}}" class="btn btn-default">ادامه خرید</a></div>
                         <div class="pull-right"><a href="{{route('order.verify')}}" class="btn btn-primary">تسویه
                                 حساب</a></div>
                     </div>
@@ -221,12 +217,17 @@
                     success: function (data) {
 console.log(data);
                         if ($.isEmptyObject(data.error)) {
+                            //           remove all message
 
-                            printSuccessMsg(data.success);
+                            printMsg(data.success);
+
+
+
 
                         } else {
 
-                            printErrorMsg(data.error);
+
+                            printMsg(data.error);
 
                         }
 
@@ -238,32 +239,20 @@ console.log(data);
             });
 
 
-            function printErrorMsg(msg) {
+                function printMsg(msg) {
 
-                $(".print-error-msg").find("ul").html('');
+                $(".print-msg").find("ul").html('');
 
-                $(".print-error-msg").css('display', 'block');
+                $(".print-msg").css('display', 'block');
 
                 $.each(msg, function (key, value) {
 
-                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+                    $(".print-msg").find("ul").append('<li>' + value + '</li>');
 
                 });
 
             }
-            function printSuccessMsg(msg) {
 
-                $(".print-success-msg").find("ul").html('');
-
-                $(".print-success-msg").css('display', 'block');
-
-                $.each(msg, function (key, value) {
-
-                    $(".print-success-msg").find("ul").append('<li>' + value + '</li>');
-
-                });
-
-            }
 
         });
 
