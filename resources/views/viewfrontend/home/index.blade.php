@@ -91,104 +91,58 @@
 
                         <div id="tab-featured" class="tab_content">
                             <div class="owl-carousel product_carousel_tab">
-                                <div class="product-thumb">
-                                    <div class="image"><a href="product.html"><img
-                                                    src="image/product/macbook_2-220x330.jpg" alt="عطر نینا ریچی"
-                                                    title="عطر نینا ریچی" class="img-responsive"/></a></div>
-                                    <div class="caption">
-                                        <h4><a href="product.html">عطر نینا ریچی</a></h4>
-                                        <p class="price"> 110000 تومان </p>
-                                    </div>
-                                    <div class="button-group">
-                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span>
-                                        </button>
-                                        <div class="add-to-links">
-                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                    onClick=""><i class="fa fa-heart"></i></button>
-                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه"
-                                                    onClick=""><i class="fa fa-exchange"></i></button>
+                                @foreach($latestProduct as $product)
+                                    @if($product->discount_price!=null)
+
+                                        <div class="product-thumb clearfix ">
+                                            <div class="image"><a href="{{route('product.single',['slug'=>$product->slug])}}"><img src="{{$product->photo->path}}"
+                                                                                                                                   alt="{{$product->title}}"
+                                                                                                                                   title="{{$product->title}}"
+                                                                                                                                   class="img-responsive" style="max-height: 100px"/></a>
+                                            </div>
+                                            <div class="caption">
+                                                <h4><a href="{{route('product.single',['slug'=>$product->slug])}}">{{$product->title}}</a></h4>
+                                                @if($product->discount_price)
+                                                    <p class="price"><span class="price-new">{{$product->discount_price}}تومان</span>
+                                                        <span class="price-old">{{$product->price}}تومان</span>
+                                                        @if(round(abs(($product->price-$product->discount_price)/$product->price*100))>0)<span
+
+                                                                class="saving">{{round(abs(($product->price-$product->discount_price)/$product->price*100))}}%</span>
+                                                        @else
+                                                            <span
+
+                                                                    class="saving">{{abs(($product->price-$product->discount_price)/$product->price*100)}}%</span>
+                                                        @endif
+                                                    </p>
+                                                @else
+                                                    <p class="price"><span class="price-new">{{$product->price}}تومان</span>
+                                                @endif
+                                                <div class="rating"><span class="fa fa-stack"><i
+                                                                class="fa fa-star fa-stack-2x"></i><i
+                                                                class="fa fa-star-o fa-stack-2x"></i></span> <span
+                                                            class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
+                                                                class="fa fa-star-o fa-stack-2x"></i></span> <span
+                                                            class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
+                                                                class="fa fa-star-o fa-stack-2x"></i></span> <span
+                                                            class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
+                                                                class="fa fa-star-o fa-stack-2x"></i></span> <span
+                                                            class="fa fa-stack"><i
+                                                                class="fa fa-star-o fa-stack-2x"></i></span></div>
+                                            </div>
+                                            <div class="button-group">
+                                                <a class="btn-primary"  href="{{route('cart.add',['id'=>$product->id])}}"><span>افزودن به سبد</span>
+                                                </a>
+                                                <div class="add-to-links">
+                                                    <button type="button" data-toggle="tooltip"
+                                                            title="افزودن به علاقه مندی ها" onClick=""><i
+                                                                class="fa fa-heart"></i></button>
+                                                    <button type="button" data-toggle="tooltip" title="مقایسه این محصول"
+                                                            onClick=""><i class="fa fa-exchange"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="image"><a href="product.html"><img
-                                                    src="image/product/macbook_3-220x330.jpg" alt="رژ لب گارنیر"
-                                                    title="رژ لب گارنیر" class="img-responsive"/></a></div>
-                                    <div class="caption">
-                                        <h4><a href="product.html">رژ لب گارنیر</a></h4>
-                                        <p class="price"> 123000 تومان </p>
-                                    </div>
-                                    <div class="button-group">
-                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span>
-                                        </button>
-                                        <div class="add-to-links">
-                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                    onClick=""><i class="fa fa-heart"></i></button>
-                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه"
-                                                    onClick=""><i class="fa fa-exchange"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="image"><a href="product.html"><img
-                                                    src="image/product/macbook_4-220x330.jpg" alt="عطر گوچی"
-                                                    title="عطر گوچی" class="img-responsive"/></a></div>
-                                    <div class="caption">
-                                        <h4><a href="product.html">عطر گوچی</a></h4>
-                                        <p class="price"> 85000 تومان </p>
-                                        <div class="rating"><span class="fa fa-stack"><i
-                                                        class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span></div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span>
-                                        </button>
-                                        <div class="add-to-links">
-                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                    onClick=""><i class="fa fa-heart"></i></button>
-                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه"
-                                                    onClick=""><i class="fa fa-exchange"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="image"><a href="product.html"><img
-                                                    src="image/product/iphone_6-220x330.jpg" alt="کرم مو آقایان"
-                                                    title="کرم مو آقایان" class="img-responsive"/></a></div>
-                                    <div class="caption">
-                                        <h4><a href="product.html">کرم مو آقایان</a></h4>
-                                        <p class="price"> 42300 تومان </p>
-                                        <div class="rating"><span class="fa fa-stack"><i
-                                                        class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
-                                                        class="fa fa-star-o fa-stack-2x"></i></span></div>
-                                    </div>
-                                    <div class="button-group">
-                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span>
-                                        </button>
-                                        <div class="add-to-links">
-                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی"
-                                                    onClick=""><i class="fa fa-heart"></i></button>
-                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه"
-                                                    onClick=""><i class="fa fa-exchange"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
 
                             </div>
                         </div>

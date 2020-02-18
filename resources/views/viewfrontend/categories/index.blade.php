@@ -12,113 +12,23 @@
                 <!--Left Part Start -->
                 <aside id="column-left" class="col-sm-3 hidden-xs">
                     <h3 class="subtitle">دسته ها</h3>
+                    {{--{{dd($categories)}}--}}
                     <div class="box-category">
                         <ul id="cat_accordion">
-                            <li><a href="category.html">مد و زیبایی</a> <span class="down"></span>
-                                <ul>
-                                    <li><a href="category.html">آقایان</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">بانوان</a></li>
-                                    <li><a href="category.html">دخترانه</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">پسرانه</a></li>
-                                    <li><a href="category.html">نوزاد</a></li>
-                                    <li><a href="category.html">لوازم</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            @foreach($categories as $cat_side)
+                            <li><a href="{{route('category.index',$cat_side->id)}}">{{$cat_side->name}}</a><span class="down"></span>
+
+                                        @if(count($cat_side->childRecursive)>0)
+                                            @include('viewfrontend.partials.category_side',['categories'=>$cat_side->childRecursive])
+
+                                        @endif
                             </li>
-                            <li><a class="active" href="category.html">الکترونیکی</a> <span class="down"></span>
-                                <ul style="display:block;">
-                                    <li><a href="category.html">لپ تاپ</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">رومیزی</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">دوربین</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">موبایل و تبلت</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">صوتی و تصویری</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته جدید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">لوازم خانگی</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="category.html">کفش</a> <span class="down"></span>
-                                <ul>
-                                    <li><a href="category.html">آقایان</a></li>
-                                    <li><a href="category.html">بانوان</a> <span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="category.html">دخترانه</a></li>
-                                    <li><a href="category.html">پسرانه</a></li>
-                                    <li><a href="category.html">نوزاد</a></li>
-                                    <li><a href="category.html">لوازم</a><span class="down"></span>
-                                        <ul>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته های جدید</a></li>
-                                            <li><a href="category.html">زیردسته ها</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="category.html">ساعت</a> <span class="down"></span>
-                                <ul>
-                                    <li><a href="category.html">ساعت مردانه</a></li>
-                                    <li><a href="category.html">ساعت زنانه</a></li>
-                                    <li><a href="category.html">ساعت بچگانه</a></li>
-                                    <li><a href="category.html">لوازم</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="category.html">زیبایی و سلامت</a> <span class="down"></span>
-                                <ul>
-                                    <li><a href="category.html">عطر و ادکلن</a></li>
-                                    <li><a href="category.html">آرایشی</a></li>
-                                    <li><a href="category.html">ضد آفتاب</a></li>
-                                    <li><a href="category.html">مراقبت از پوست</a></li>
-                                    <li><a href="category.html">مراقبت از چشم</a></li>
-                                    <li><a href="category.html">مراقبت از مو</a></li>
-                                </ul>
-                            </li>
+                            @endforeach
+
+
                         </ul>
                     </div>
+
                     <h3 class="subtitle">پرفروش ها</h3>
                     <div class="side-item">
                         <div class="product-thumb clearfix">

@@ -24,14 +24,14 @@ return view('viewfrontend.products.index',compact(['product','relatedProducts'])
     public function getProductByCategory($id,$page=4)
     {
         $category=Category::with('children')->whereId($id)->get();
-
+$categories=Category::where('parent_id',null)->with('childRecursive')->get();
         $productscat=Product::with('photo')->where('category_id',$category[0]->id)->paginate($page);
 //        dd($category[0]->name);
 //        dd($category[0]->children[0]->name);
 //        dd($category[0]->children);
 //        dd($category);
 //dd($productscat[0]->title);
-        return view('viewfrontend.categories.index',compact(['category','productscat']));
+        return view('viewfrontend.categories.index',compact(['category','productscat','categories']));
 
     }
     public function searchProduct()
