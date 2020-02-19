@@ -2,16 +2,7 @@
 
 @section('main-content')
 
-    @if(\Illuminate\Support\Facades\Session::has('add_attributesGroup'))
-        <div class="alert alert-success">
-            {{session('add_attributesGroup')}}
-        </div>
-    @endif
-    @if(\Illuminate\Support\Facades\Session::has('update_attributesGroup'))
-        <div class="alert alert-success">
-            {{'دسته شماره'.session('update_attributesGroup').'ویرایش شد.'}}
-        </div>
-    @endif
+
 
     <section class="content">
         <div class="box box-info">

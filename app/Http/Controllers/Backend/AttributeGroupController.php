@@ -69,7 +69,10 @@ class AttributeGroupController extends Controller
     public function edit($id)
     {
         $attribute=AttributeGroup::findOrFail($id);
+//        dd($attribute);
+
         return view('viewbackend.attributes.edit',compact(['attribute']));
+
     }
 
     /**

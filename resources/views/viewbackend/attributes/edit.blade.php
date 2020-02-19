@@ -16,11 +16,11 @@
 
                     <option value="select"
                    @if($attribute->type=='select' )
-                    selected;
+                    selected
 
                     @endif>لیست تکی</option>
-                    <option value="multiple" @if($attribute->type=='select' )
-                    selected;
+                    <option value="multiple" @if($attribute->type=='multiple' )
+                    selected
 
                     @endif>لیست چندتایی</option>
 

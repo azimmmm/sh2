@@ -6,6 +6,8 @@ use App\AttributeGroup;
 use App\AttributeValue;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class AttributeValueController extends Controller
 {
@@ -28,6 +30,7 @@ class AttributeValueController extends Controller
      */
     public function create()
     {$attribute_group=AttributeGroup::all();
+
        return view('viewbackend.attributes-value.create',compact('attribute_group'));
     }
 
@@ -43,6 +46,7 @@ class AttributeValueController extends Controller
         $attribute->title=$request->input('title');
         $attribute->attributeGroup_id=$request->input('type');
         $attribute->save();
+        Session::flash('create_attributeValue','مقدار ویژگی  جدید '. $attribute->title.' با موفقیت ثبت شد. ');
         return redirect('main/attributes-value');
     }
 
@@ -83,6 +87,7 @@ class AttributeValueController extends Controller
         $attribute->title=$request->input('title');
         $attribute->attributeGroup_id=$request->input('type');
         $attribute->save();
+        Session::flash('update_attributeValue','مقذار ویژگی '. $attribute->title.' با موفقیت ویرایش شد. ');
         return redirect('main/attributes-value');
     }
 
@@ -96,6 +101,7 @@ class AttributeValueController extends Controller
     {
         $attribute=AttributeValue::findOrFail($id);
         $attribute->delete();
+        Session::flash('delete_attributeValue','مقدار ویژگی   '. $attribute->title.' حذف شد. ');
         return redirect('main/attributes-value');
     }
 }

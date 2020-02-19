@@ -31,8 +31,11 @@ class ProductController extends Controller
     {
 
         $brands = Brand::all();
+
         $categories =Category::with('childRecursive')
-            ->get();
+            ->where('parent_id',null)->get();
+
+
         return view('viewbackend.products.create',compact(['brands','categories']));
     }
 
@@ -58,6 +61,7 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
+
         $product=new Product();
 
         $product->title=$request->input('title');
