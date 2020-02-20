@@ -147,14 +147,28 @@ return redirect()->to('main/categories');
 
     }
 
-//    public function apiIndex()
-//    {
-//        $categories = Category::with('childRecursive')
-//            ->where('parent_id', null)
-//            ->get();
-//        $response=[
-//            'categories'=>$categories
-//        ];
-//        return response()->json($response,200);
-//    }
+    public function apiIndex()
+    {
+        $categories = Category::with('childRecursive')
+            ->where('parent_id', null)
+            ->get();
+        $response=[
+            'categories'=>$categories
+        ];
+        return response()->json($response,200);
+    }
+
+    public function apiIndexAttribute(Request $request)
+    {
+        $categories=$request->all();
+        $attributeGroup=AttributeGroup::with('attributesValue','categories')->whereHas('categories',function($q) use ($categories){
+            $q->whereIn('categories.id',$categories);
+
+        })->get();
+        $response=[
+            'attribute'=>$attributeGroup
+        ];
+        return response()->json($response,200);
+
+    }
 }

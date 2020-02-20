@@ -10,7 +10,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/admincssjs/js')
+    .sass('resources/sass/app.scss', 'public/admincssjs/css');
 mix.styles(['resources/admincssjs/bootstrap/css/dropzone.min.css'],'public/admincssjs/dist/css/dropzone.min.css')
     .scripts(['resources/admincssjs/bootstrap/js/dropzone.min.js'],'public/admincssjs/dist/js/dropzone.min.js');

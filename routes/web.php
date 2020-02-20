@@ -61,3 +61,10 @@ Route::get('/payment-verify/{id}','Frontend\PaymentController@verify')->name('pa
     Route::post('coupon/add', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 
 });
+
+
+
+Route::prefix('api')->group(function(){
+    Route::get('/categories','Backend\CategoryController@apiIndex');
+    Route::post('/categories/attribute','Backend\CategoryController@apiIndexAttribute');
+});

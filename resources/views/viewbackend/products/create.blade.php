@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{asset('admincssjs/dist/css/dropzone.min.css')}}">
 @endsection
 @section('main-content')
-    <div class="content">
+    <div class="content" id="app">
         <div class="box box-info">
             <div class="box-header with-border">
 
@@ -25,8 +25,8 @@
                             <div class="form-group">
 
 
-                                <label>دسته بندی مربوطه</label>
-                                <select name="category_parent" id="" class="form-control" multiple>
+                                <label for="categories">دسته بندی مربوطه</label>
+                                <select name="categories[]" id="" class="form-control" multiple>
 
                                     @foreach($categories as $category)
 
@@ -112,6 +112,7 @@
 
 @endsection
 @section('scripts')
+    <script src="{{asset('admincssjs/js/app.js')}}"></script>
 <script type="text/javascript" src="{{asset('admincssjs/dist/js/dropzone.min.js')}}"></script>
 <script>
 // fix this “Dropzone already attached” error with Dropzone.autoDiscover=false

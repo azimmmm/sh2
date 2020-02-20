@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Brand;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\productRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -59,13 +60,13 @@ class ProductController extends Controller
         return Product::where("sku",$number)->exists();
 
     }
-    public function store(Request $request)
+    public function store(productRequest $request)
     {
 
         $product=new Product();
 
         $product->title=$request->input('title');
-        $product->category_id =$request->input('category_parent');
+        $product->category_id =$request->input('categories');
         $product->long_desc =$request->input('long_desc');
         $product->short_desc =$request->input('short_desc');
         $product->discount_price =$request->input('discount_price');
@@ -75,12 +76,6 @@ class ProductController extends Controller
         $product->brand_id =$request->input('brand');
 
         $product->user_id =8;
-
-        if ($request->input('slug')) {
-            $product->slug = make_slug($request->input('slug'));
-        } else {
-            $product->slug = make_slug($request->input('title'));
-        }
         $product->sku =$this->generateSku();
 //
         $product->photo_id = $request->input('photo_id');

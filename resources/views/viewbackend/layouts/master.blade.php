@@ -35,6 +35,7 @@
     <script src="{{asset('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')}}"></script>
     <script src="{{asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
 
+
     <![endif]-->
 
     @yield('styles')
@@ -783,6 +784,7 @@
 
 @yield('scripts')
 <!-- jQuery 2.2.0 -->
+
 <script src="{{asset('admincssjs/plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('admincssjs/plugins/jQueryUI/jquery-ui.js')}}"></script>

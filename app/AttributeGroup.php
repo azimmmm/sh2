@@ -10,7 +10,7 @@ class AttributeGroup extends Model
 
     public function attributesValue()
     {
-        return $this->hasMany(AttributeValue::class);
+        return $this->hasMany(AttributeValue::class,'attributegroup_id');
 
     }
 
