@@ -1,32 +1,39 @@
 <template>
     <div>
         <div class="form-group">
-            <label>دسته بندی مربوطه</label>
-
-            <select name="categories[]"  class="form-control" multiple="true" v-model="categories_selected" @onchange>
-<option v-for="category in categories" :value="category.id">{{category.name}}</option>
+            <label>دسته بندی</label>
+            <select name="categories[]" id="" class="form-control"  multiple="true" v-model="categories_selected" @change="onChange($event, null)">
+                <option v-for="category in categories" :value="category.id">{{category.name}}</option>
             </select>
         </div>
-
         <div class="form-group">
             <label>برند</label>
-            <select name="brand"  class="form-control">
-
-
-                <option v-for="brand in brands" :value="brand.id">{{brand.title}}</option>
-
+            <select name="brand" class="form-control">
+                <option v-if="!product" v-for="brand in brands" :value="brand.id">{{brand.title}}</option>
+                <option v-if="product" v-for="brand in brands"  :selected="product.brand.id === brand.id" :value="brand.id">{{brand.title}}</option>
             </select>
         </div>
+        <div v-if="flag">
+            <div class="form-group" v-for="(attribute, index) in attributes">
+                <label>ویژگی {{attribute.title}}</label>
+                <select class="form-control" @change="addAttribute($event, index)">
+                    <option>انتخاب کنید...</option>
+                    <option v-if="!product" v-for="attributeValue in attribute.attributes_value" :value="attributeValue.id">{{attributeValue.title}}</option>
+                    <option v-if="product"  v-for="attributeValue in attribute.attributes_value" :value="attributeValue.id" :selected="product.attribute_values[index] && product.attribute_values[index]['id'] == attributeValue.id">{{attributeValue.title}}</option>
+                </select>
+            </div>
+        </div>
+        <input type="hidden" name="attributes[]" :value="computedAttribute">
     </div>
 </template>
 
 <script>
     export default {
-        data(){
-            return{
-                categories:[],
-                categories_selected:[],
-                flag:false,
+        data() {
+            return {
+                categories: [],
+                categories_selected: [],
+                flag: false,
                 attributes:[],
                 selectedAttribute: [],
                 computedAttribute: []
@@ -102,7 +109,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

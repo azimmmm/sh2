@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
 
-                        <form method="post" action="/main/products">
+                        <form id="myForm" method="post" action="/main/products">
                             @csrf
                             <div class="form-group">
                                 <label for="title">عنوان محصول</label>
@@ -22,35 +22,7 @@
                                        placeholder="عنوان محصول را وارد کنید ....">
                             </div>
 
-                            <div class="form-group">
-
-
-                                <label for="categories">دسته بندی مربوطه</label>
-                                <select name="categories[]" id="" class="form-control" multiple>
-
-                                    @foreach($categories as $category)
-
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-
-                                        @if(count($category->childRecursive)>0)
-
-                                            @include('viewbackend.partials.category',['categories'=>$category->childRecursive,'level'=>1])
-                                            ;
-
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                    <label>برند</label>
-                                <select name="brand" id="" class="form-control">
-                                    @foreach($brands as $brand)
-
-                                        <option value="{{$brand->id}}">{{$brand->title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <attribute-component :brands="{{ $brands }}"></attribute-component>
                                         <div class='form-group'>
                                 <label for="status">وضعیت نشر</label>
                                 <div>

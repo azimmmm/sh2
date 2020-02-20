@@ -1,17 +1,17 @@
+
+
 require('./bootstrap');
 
 
-window.vue=require('vue');
+window.Vue = require('vue');
 
 
 // vue.component('example-component',require('./components/ExampleComponent.vue').default);
-vue.component('attribute-component',require('./components/AttributeComponent.vue').default);
+Vue.component('attribute-component', require('./components/AttributeComponent.vue').default);
 
 
 
-const app=new vue({
+const app=new Vue({
     el:'#app',
-    components:[
-        'attribute-component'
-    ]
+
 });

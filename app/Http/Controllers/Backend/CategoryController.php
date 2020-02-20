@@ -152,6 +152,7 @@ return redirect()->to('main/categories');
         $categories = Category::with('childRecursive')
             ->where('parent_id', null)
             ->get();
+
         $response=[
             'categories'=>$categories
         ];
@@ -166,7 +167,7 @@ return redirect()->to('main/categories');
 
         })->get();
         $response=[
-            'attribute'=>$attributeGroup
+            'attributes'=>$attributeGroup
         ];
         return response()->json($response,200);
 
